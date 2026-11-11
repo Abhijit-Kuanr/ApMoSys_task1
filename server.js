@@ -1,8 +1,10 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const { exec } = require('child_process');
 
 const PORT = 3000;
+const URL = `http://localhost:${PORT}/`;
 
 const server = http.createServer((req, res) => {
   const filePath = path.join(__dirname, 'index.html');
@@ -20,5 +22,19 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
+  console.log(`Server running at ${URL}`);
+
+  // Automatically open the URL in the default browser based on the OS
+  const openCommand =
+    process.platform === 'win32'
+      ? `start ${URL}`
+      : process.platform === 'darwin'
+      ? `open ${URL}`
+      : `xdg-open ${URL}`;
+
+  exec(openCommand, (err) => {
+    if (err) {
+      console.error('Could not open browser automatically:', err.message);
+    }
+  });
 });
