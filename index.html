@@ -1,11 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Node.js Server</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ApMoSys Task 1 | Abhijit Kuanr</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #dbeafe;
+      color: var(--primary-dark);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      background-color: var(--card-bg);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      background-color: #f1f5f9;
+    }
+
+    .features {
+      max-width: 1000px;
+      margin: 2rem auto 5rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello from Node.js!</h1>
-  <p>Your index.html file is live.</p>
+
+  <header>
+    <a href="#" class="logo">ApMoSys Task 1</a>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#stack">Tech Stack</a>
+      <a href="https://github.com/Abhijit-Kuanr/ApMoSys_task1" target="_blank">GitHub</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="overview">
+    <span class="badge">Deployment Live • Node.js & Jenkins</span>
+    <h1>Welcome to ApMoSys Task 1</h1>
+    <p>
+      Hosted via a lightweight Node.js web server and automated through a Jenkins CI/CD pipeline by <strong>Abhijit Kuanr</strong>.
+    </p>
+    <div class="btn-group">
+      <a href="https://github.com/Abhijit-Kuanr/ApMoSys_task1" target="_blank" class="btn btn-primary">
+        View Source on GitHub
+      </a>
+      <a href="#stack" class="btn btn-outline">
+        Explore Setup
+      </a>
+    </div>
+  </section>
+
+  <section class="features" id="stack">
+    <div class="card">
+      <h3>Node.js Hosting</h3>
+      <p>
+        Served directly by <code>server.js</code> using Node's native HTTP and File System modules for fast, zero-dependency delivery.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Jenkins Automation</h3>
+      <p>
+        Connected to an Ubuntu build agent to automatically pull updates from the <code>main</code> branch and deploy changes.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Version Controlled</h3>
+      <p>
+        All application source code and configuration files are tracked and maintained in the <code>ApMoSys_task1</code> repository.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Abhijit Kuanr &bull; ApMoSys Task 1</p>
+  </footer>
+
 </body>
 </html>
