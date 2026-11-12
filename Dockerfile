@@ -1,17 +1,19 @@
 FROM ubuntu:24.04
 
-ENV DEBIAN_FRONTEND=noninteractive
+# Prevent interactive prompts during package installation
+ARG DEBIAN_FRONTEND=noninteractive
 
+# Update packages and install curl and certificates
 RUN apt-get update && apt-get install -y \
     curl \
-    wget \
-    git \
-    nano \
+    ca-certificates \
+    gnupg \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /root
+# Add NodeSource repository and install Node.js
+RUN curl -fsSL https://nodesource.com | bash - \
+    && apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copies the entire contents of the build context (freestyle_test) into /root/freestyle_test
-COPY . /root/freestyle_test
-
-CMD ["/bin/bash"]
+# Verify installation
+RUN node -v && npm -v
