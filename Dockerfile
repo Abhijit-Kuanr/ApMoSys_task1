@@ -1,24 +1,18 @@
-FROM ubuntu:24.04
+# Use an official lightweight Node.js image
+FROM node:20-alpine
 
-# Prevent interactive prompts during package installation
-ARG DEBIAN_FRONTEND=noninteractive
+# Set the working directory inside the container
+WORKDIR /usr/src/app
 
-# Update packages and install curl and certificates
-RUN apt-get update && apt-get install -y \
-    curl \
-    ca-certificates \
-    gnupg \
-    && rm -rf /var/lib/apt/lists/*
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install --omit=dev
 
-# Add NodeSource repository and install Node.js (split URL to prevent auto-shortening)
-RUN SUBDOMAIN="deb" && \
-    DOMAIN="nodesource.com" && \
-    SCRIPT="setup_22.x" && \
-    curl -fsSL "https://${SUBDOMAIN}.${DOMAIN}/${SCRIPT}" | bash - && \
-    apt-get install -y nodejs && \
-    rm -rf /var/lib/apt/lists/*
+# Copy the rest of your application code
+COPY . .
 
+# Document the port the app listens on
+EXPOSE 3000
 
-
-# Verify installation
-RUN node -v && npm -v
+# Start the server
+CMD ["node", "server.js"]
