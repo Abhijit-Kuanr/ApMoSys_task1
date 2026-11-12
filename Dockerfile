@@ -15,5 +15,6 @@ RUN curl -fsSL https://nodesource.com | bash - \
     && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
+
 # Verify installation
 RUN node -v && npm -v
