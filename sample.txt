@@ -1,8 +1,5 @@
-initial commit : sprint branch start
-<<<<<<< HEAD
 Adding button : ID002
 Login page change : LP001
 Icon change : IC001
-=======
-Adding button : ID002
->>>>>>> 2a76a64 (Adding button : ID002)
+userPassword: Abhijit@1234
+
