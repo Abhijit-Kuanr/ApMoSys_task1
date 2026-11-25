@@ -2,4 +2,6 @@ Adding button : ID002
 Login page change : LP001
 Icon change : IC001
 userPassword: Abhijit@1234
-
+AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCY9876543210
+Test email
